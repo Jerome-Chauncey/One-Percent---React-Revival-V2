@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Disclaimer from "./Disclaimer";  
 import TickerTape from "./TickerTape";
 import Cta from "./Cta";
+import BottomDisclaimer from "./BottomDisclaimer";
 
 const Layout = () => {
   return (
@@ -12,6 +13,7 @@ const Layout = () => {
       <Navbar />
       <TickerTape/>
       <Cta/>
+      <BottomDisclaimer/>
       <main>
         <Outlet />
       </main>
