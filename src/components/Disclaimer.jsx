@@ -1,10 +1,10 @@
 import React from "react";
 function Disclaimer() {
   return (
-    <div class="bg-dark text-white sticky-top">
-      <div class="container px-3 px-lg-0">
-        <div class="d-flex justify-content-center">
-          <div class="text-start">
+    <div className="bg-dark text-white sticky-top">
+      <div className="container px-3 px-lg-0">
+        <div className="d-flex justify-content-center">
+          <div className="text-start">
             <p>
               Online Forex/CFDs are complex instruments and come with a high
               risk of losing money rapidly due to leverage. 84.62% of retail
