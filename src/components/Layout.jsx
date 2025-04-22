@@ -13,8 +13,8 @@ const Layout = () => {
       <main>
         <Outlet />
       </main>
-      <BottomDisclaimer />
       <Footer />
+      <BottomDisclaimer />
     </>
   );
 };
