@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const slides = [
   {
@@ -55,6 +55,13 @@ const slides = [
 const HeroSection = () => {
   const [index, setIndex] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 7000); // auto-slide every 7 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   const switchSlide = () => setIndex((prev) => (prev + 1) % slides.length);
 
   return (
@@ -71,7 +78,7 @@ const HeroSection = () => {
     >
       <div className="absolute inset-0 bg-black/60 z-10" />
 
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-8 z-20 pt-90">
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-8 z-20 mt-90">
         <div className="max-w-4xl space-y-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
             {slides[index].h1}
@@ -89,7 +96,7 @@ const HeroSection = () => {
 
           <button
             onClick={switchSlide}
-            className="mt-6 inline-flex items-center gap-3 bg-black text-white px-6 py-3 rounded-full text-sm md:text-base font-semibold tracking-wide hover:bg-gray-800 transition-all duration-300 shadow-lg"
+            className="hero-slide-button mt-6 inline-flex items-center gap-3 px-6 py-3 rounded-full text-sm md:text-base font-semibold tracking-wide shadow-lg"
           >
             Slide
           </button>

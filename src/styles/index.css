@@ -1,0 +1,113 @@
+/* Custom styles for attraction and visibility */
+
+/* Typography enhancements */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #f8f9fa; /* light color for visibility */
+  background-color: #121212; /* dark background for contrast */
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: #e0e0e0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* Links and buttons */
+a, .nav-link {
+  color: #bb86fc;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus, .nav-link:hover, .nav-link:focus {
+  color: #3700b3;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Buttons */
+button, .btn {
+  font-weight: 600;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(187, 134, 252, 0.4);
+}
+
+button:hover, button:focus, .btn:hover, .btn:focus {
+  background-color: #3700b3 !important;
+  box-shadow: 0 6px 12px rgba(55, 0, 179, 0.7);
+  outline: none;
+  color: #fff !important;
+}
+
+/* Navbar improvements */
+.navbar {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  transition: background-color 0.4s ease;
+}
+
+.navbar:hover {
+  background-color: #1f1f1f !important;
+}
+
+/* Footer improvements */
+#footer {
+  background-color: #1a1a1a !important;
+  color: #bbb;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+}
+
+#footer a {
+  color: #bb86fc;
+  transition: color 0.3s ease;
+}
+
+#footer a:hover, #footer a:focus {
+  color: #3700b3;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Social icons */
+.social-icon {
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.social-icon:hover, .social-icon:focus {
+  filter: brightness(1);
+  outline: none;
+}
+
+/* HeroSection button */
+.hero-slide-button {
+  background-color: #bb86fc;
+  color: #121212;
+  font-weight: 700;
+  box-shadow: 0 4px 8px rgba(187, 134, 252, 0.6);
+  transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.hero-slide-button:hover, .hero-slide-button:focus {
+  background-color: #3700b3;
+  color: #fff;
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Smooth transitions for interactive elements */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Utility spacing */
+.mt-90 {
+  margin-top: 90px;
+}
