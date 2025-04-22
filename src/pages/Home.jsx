@@ -8,7 +8,6 @@ import About from "../components/About";
 function Home() {
   return (
     <>
-      <Disclaimer />
       <TickerTape />
       <HeroSection />
       <About />

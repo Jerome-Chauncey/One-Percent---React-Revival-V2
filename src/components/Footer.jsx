@@ -21,6 +21,7 @@ const Footer = () => {
                 title="Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="footer-link"
               >
                 <img
                   src="https://eq-cdn.equiti-me.com/website/documents/instagram_BOVNLvi.svg"
@@ -35,6 +36,7 @@ const Footer = () => {
                 title="Linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="footer-link"
               >
                 <img
                   src="https://eq-cdn.equiti-me.com/website/documents/linkedin_7mDS4co.svg"
@@ -65,6 +67,7 @@ const Footer = () => {
                     href="https://www.myfxbook.com/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="footer-link"
                   >
                     Myfxbook
                   </a>
@@ -74,6 +77,7 @@ const Footer = () => {
                     href="https://www.fxblue.com/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="footer-link"
                   >
                     Fxblue
                   </a>
@@ -83,6 +87,7 @@ const Footer = () => {
                     href="https://www.forexfactory.com/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="footer-link"
                   >
                     ForexFactory
                   </a>
@@ -111,7 +116,7 @@ const Footer = () => {
                 <div className="d-flex flex-column align-items-start">
                   <a
                     href="tel:+254714923182"
-                    className="m-0 title page-link"
+                    className="m-0 title page-link footer-link"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -131,7 +136,7 @@ const Footer = () => {
                 <div className="d-flex flex-column align-items-start">
                   <a
                     href="mailto:jerome.chauncey@student.moringaschool.com"
-                    className="m-0 title page-link"
+                    className="m-0 title page-link footer-link"
                   >
                     Email
                   </a>
