@@ -1,8 +1,11 @@
 import React from 'react'
+import TopStories from '../components/TopStories'
 
 const News = () => {
   return (
-    <div>News</div>
+    <div>
+      <TopStories/>
+    </div>
   )
 }
 
