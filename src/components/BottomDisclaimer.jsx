@@ -2,8 +2,8 @@ import React from "react";
 
 function BottomDisclaimer() {
   return (
-    <div class="d-flex justify-content-center bg-dark text-white">       
-      <div class="text-start">
+    <div className="d-flex justify-content-center bg-dark text-white">       
+      <div className="text-start">
         <p>
           Margined FX and contracts for difference are complex leveraged
           products which carry a high level of risk and can result in losses
@@ -22,7 +22,7 @@ function BottomDisclaimer() {
           use by any person in any jurisdiction where such use would be contrary
           to local law or regulation.
         </p>
-        <div class="copyright px-2 px-sm-0">
+        <div className="copyright px-2 px-sm-0">
           <p>© 2025 One Percent, All Rights Reserved</p>
         </div>
       </div>

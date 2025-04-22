@@ -39,8 +39,8 @@ export default function BrokerForm({ onSubmit }) {
     });
   };
   return (
-    <div className=" mx-md-4 my-4 col-12 col-sm-6 col-md-4 card shadow-sm p-3 mb-5 bg-body rounded">
-      <h2>Broker Review Form</h2>
+    <div className=" card shadow-sm p-3 mb-4 bg-body rounded" style={{width: "100%"}}>
+      <h2>Broker Review Form</h2> 
       <form onSubmit={handleSubmit}>
         <div className="mb-3 ">
           <label className="form-label" htmlFor="Broker">
