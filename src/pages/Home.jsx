@@ -1,12 +1,19 @@
 import React from "react";
-// import Disclaimer from "../components/Disclaimer";
-// import { NavLink } from "react-router-dom";
+import Disclaimer from "../components/Disclaimer";
+import TickerTape from "../components/TickerTape";
+import Cta from "../components/Cta";
 
 function Home() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Disclaimer />
+      <div className="container mt-4">
+        <h1>Welcome to One Percent</h1>
+        <p></p>
+      </div>
+      <TickerTape />
+      <Cta />
+    </>
   );
 }
 
