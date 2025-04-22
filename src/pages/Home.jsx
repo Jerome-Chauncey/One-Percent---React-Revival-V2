@@ -12,6 +12,7 @@ function Home() {
       <TickerTape />
       <HeroSection />
       <About />
+      <Cta />
 
     </>
   );
