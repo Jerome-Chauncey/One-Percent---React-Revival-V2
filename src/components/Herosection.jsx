@@ -78,25 +78,15 @@ const HeroSection = () => {
     >
       <div className="absolute inset-0 bg-black/60 z-10" />
 
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-8 z-20 mt-90">
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-8 z-20 pt-90">
         <div className="max-w-4xl space-y-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-            {slides[index].h1}
-          </h1>
-          <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold text-indigo-300">
-            {slides[index].h2}
-          </h2>
-          <h3 className="text-lg md:text-xl text-gray-300">
-            {slides[index].h3}
-          </h3>
-
-          <p className="text-base md:text-lg text-gray-300 mt-2">
-            {slides[index].p}
-          </p>
-
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">{slides[index].h1}</h1>
+          <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold text-indigo-300">{slides[index].h2}</h2>
+          <h3 className="text-lg md:text-xl text-gray-300">{slides[index].h3}</h3>
+          <p className="text-base md:text-lg text-gray-300 mt-2">{slides[index].p}</p>
           <button
             onClick={switchSlide}
-            className="hero-slide-button mt-6 inline-flex items-center gap-3 px-6 py-3 rounded-full text-sm md:text-base font-semibold tracking-wide shadow-lg"
+            className="mt-6 inline-flex items-center gap-3 bg-black text-white px-6 py-3 rounded-full text-sm md:text-base font-semibold tracking-wide hover:bg-gray-800 transition-all duration-300 shadow-lg"
           >
             Slide
           </button>
