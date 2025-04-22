@@ -1,22 +1,22 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Disclaimer from "./Disclaimer";
 import Navbar from "./Navbar";
-import Disclaimer from "./Disclaimer";  
-import TickerTape from "./TickerTape";
-import HeroSection from "./Herosection";
-import About from "./About";
+import Footer from "./Footer";
+import BottomDisclaimer from "./BottomDisclaimer";
 
 const Layout = () => {
   return (
     <>
       <Disclaimer />
       <Navbar />
-      <TickerTape/>
-      <HeroSection/>
-      <About/>
+      
       <main>
         <Outlet />
       </main>
+
+      <Footer />
+      <BottomDisclaimer />
     </>
   );
 };
