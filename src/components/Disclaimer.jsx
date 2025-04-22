@@ -1,7 +1,7 @@
 import React from "react";
 function Disclaimer() {
   return (
-    <div className="bg-dark text-white sticky-top">
+    <div className="bg-dark text-primary sticky-top">
       <div className="container px-3 px-lg-0">
         <div className="d-flex justify-content-center">
           <div className="text-start">
