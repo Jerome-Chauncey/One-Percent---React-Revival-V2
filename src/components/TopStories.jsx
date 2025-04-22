@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import EconomicCalendar from "./EconomicCalendar";
 
 function TopStories() {
   const containerRef = useRef(null);
@@ -40,7 +41,13 @@ function TopStories() {
               ></a>
             </div>
           </div>
+          <div className="col-12 col-md-6">
+            <EconomicCalendar />
+          </div>
         </div>
+        
+
+          
       </div>
     </div>
   );
