@@ -1,0 +1,28 @@
+
+
+.gradient-custom-2 {
+    background: #111;
+    background: linear-gradient(to right, #191919, #2d2d2d, #3a3a3a, #4d4d4d);
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .gradient-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+    }
+}
+
+.login-logo {
+    width: 120px;
+    margin-bottom: 1rem;
+}
