@@ -178,7 +178,6 @@ function Market() {
       newsRef.current.appendChild(newsScript);
     }
   }, []);
-
   return (
     <div style={{ padding: "0", margin: "0", minHeight: "100vh", overflowY: "auto", background: "#111", color: "#fff" }}>
       {/* Ticker Section */}
@@ -225,18 +224,20 @@ function Market() {
         </div>
       </section>
 
-      {/* News Widget Section (Now Below Financials) */}
-      <section ref={newsRef} style={{ width: "100%", maxWidth: "800px", height: "550px", marginTop: "50px" }} className="tradingview-widget-container">
-        <div className="tradingview-widget-container__widget"></div>
-      </section>
+      {/* News + Technical Analysis Side by Side */}
+      <section style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "20px", padding: "0 20px 50px" }}>
+        {/* News Widget Section */}
+        <div ref={newsRef} style={{ flex: "1 1 48%", maxWidth: "800px", height: "550px" }} className="tradingview-widget-container">
+          <div className="tradingview-widget-container__widget"></div>
+        </div>
 
-      {/* Technical Analysis Section */}
-      <section ref={technicalAnalysisRef} style={{ width: "100%", height: "450px" }} className="tradingview-widget-container">
-        <div className="tradingview-widget-container__widget"></div>
+        {/* Technical Analysis Section */}
+        <div ref={technicalAnalysisRef} style={{ flex: "1 1 48%", maxWidth: "800px", height: "450px" }} className="tradingview-widget-container">
+          <div className="tradingview-widget-container__widget"></div>
+        </div>
       </section>
     </div>
   );
 }
 
 export default Market;
-
