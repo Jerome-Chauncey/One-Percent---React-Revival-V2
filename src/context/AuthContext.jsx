@@ -1,21 +1,71 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
-const defaultUser = {
-  email: "testing@gmail.com",
-  password: "testing123",
-};
-
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
 
-  const login = (email, password) => {
-    if (email === defaultUser.email && password === defaultUser.password) {
-      setUser({ email });
-      return true;
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
     }
-    return false;
+  }, [user]);
+
+  const login = async (email, password) => {
+    try {
+      const res = await fetch(
+        "https://onepercentrevivalv2-users.onrender.com/users"
+      );
+      const users = await res.json();
+
+      const user = users.find(
+        (u) =>
+          u.email.toLowerCase().trim() === email.toLowerCase().trim() &&
+          u.password === password
+      );
+
+      if (user) {
+        setUser({ email: user.email });
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      return false;
+    }
+  };
+
+  const register = async (username, email, password) => {
+    try {
+      const response = await fetch(
+        "https://onepercentrevivalv2-users.onrender.com/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, email, password }),
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Registration failed");
+      }
+
+      const data = await response.json();
+      setUser({ email: data.email });
+      return { success: true };
+    } catch (error) {
+      console.error("Registration error:", error);
+      return { success: false, message: error.message };
+    }
   };
 
   const logout = () => {
@@ -23,7 +73,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

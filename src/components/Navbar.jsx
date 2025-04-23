@@ -67,15 +67,22 @@ const Navbar = () => {
               </NavLink>
             </li>
             {user ? (
-              <li className="nav-item">
-                <button
-                  className="btn btn-link nav-link text-white"
-                  onClick={handleLogout}
-                  style={{ cursor: "pointer" }}
-                >
-                  LOGOUT
-                </button>
-              </li>
+              <>
+                <li className="nav-item">
+                  <NavLink className="nav-link text-white" to="/truth">
+                    TRUTH ABOUT RETAIL BROKERAGE
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <button
+                    className="btn btn-link nav-link text-white"
+                    onClick={handleLogout}
+                    style={{ cursor: "pointer" }}
+                  >
+                    LOGOUT
+                  </button>
+                </li>
+              </>
             ) : (
               <li className="nav-item">
                 <NavLink className="nav-link text-white" to="/login">

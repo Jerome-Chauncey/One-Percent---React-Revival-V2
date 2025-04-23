@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CompanyLogo from "../icons/OnePercentLogo.png"; 
 import "../styles/Login.css";
+import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -9,9 +10,11 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { register } = useAuth();
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (!email || !password || !confirmPassword || !username) {
       setError("Please fill in all fields.");
       return;
@@ -22,10 +25,18 @@ const Register = () => {
       return;
     }
 
-    console.log("Registering:", { email, password, username });
-
     setError("");
-    navigate("/login");
+    setLoading(true);
+
+    const result = await register(username, email, password);
+
+    setLoading(false);
+
+    if (result.success) {
+      navigate("/login");
+    } else {
+      setError(result.message || "Registration failed. Please try again.");
+    }
   };
 
   const handleLoginRedirect = () => {
@@ -110,8 +121,9 @@ const Register = () => {
                         className="btn btn-primary btn-block w-100"
                         type="button"
                         onClick={handleRegister}
+                        disabled={loading}
                       >
-                        Register
+                        {loading ? "Registering..." : "Register"}
                       </button>
                     </div>
 

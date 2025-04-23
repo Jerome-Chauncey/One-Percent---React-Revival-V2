@@ -5,19 +5,26 @@ import "../styles/Login.css";
 import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
-  const { login } = useContext(AuthContext); 
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
     }
 
-    const success = login(email, password);
+    setError("");
+    setLoading(true);
+
+    const success = await login(email, password);
+
+    setLoading(false);
+
     if (success) {
       navigate("/truth");
     } else {
@@ -95,8 +102,9 @@ const Login = () => {
                         className="btn btn-primary btn-block w-100"
                         type="button"
                         onClick={handleLogin}
+                        disabled={loading}
                       >
-                        Log in
+                        {loading ? "Logging in..." : "Log in"}
                       </button>
                     </div>
 
