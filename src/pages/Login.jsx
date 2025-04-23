@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import CompanyLogo from "../icons/OnePercentLogo.png";
 import "../styles/Login.css";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
+  const { login } = useContext(AuthContext); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,21 +17,24 @@ const Login = () => {
       return;
     }
 
-    console.log("Logging in with:", { email, password });
-
-    navigate("/"); 
+    const success = login(email, password);
+    if (success) {
+      navigate("/truth");
+    } else {
+      setError("Invalid email or password.");
+    }
   };
 
   const handleCreateAccount = () => {
-    navigate("/register"); 
+    navigate("/register");
   };
 
   const handleForgotPassword = () => {
-    navigate("/forgotpassword"); 
+    navigate("/forgotpassword");
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleLogin();
     }
   };
@@ -46,18 +51,18 @@ const Login = () => {
               <div className="col-12 d-flex justify-content-center align-items-center">
                 <div className="card-body p-4 p-md-5 mx-md-4 w-100">
                   <div className="text-center">
-                    <img
-                      src={CompanyLogo}
-                      className="login-logo"
-                      alt="logo"
-                    />
+                    <img src={CompanyLogo} className="login-logo" alt="logo" />
                     <h4 className="mt-1 mb-4">One Percent</h4>
                   </div>
 
                   <form onSubmit={(e) => e.preventDefault()}>
                     <p className="text-center">Please login to your account</p>
 
-                    {error && <div className="text-danger text-center mb-3">{error}</div>}
+                    {error && (
+                      <div className="text-danger text-center mb-3">
+                        {error}
+                      </div>
+                    )}
 
                     <div className="form-outline mb-3">
                       <input
@@ -66,10 +71,10 @@ const Login = () => {
                         placeholder="Email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        onKeyPress={handleKeyPress}
+                        onKeyDown={handleKeyPress}
                         required
                       />
-                      <label className="form-label">Username</label>
+                      <label className="form-label">Email</label>
                     </div>
 
                     <div className="form-outline mb-3">
@@ -79,7 +84,7 @@ const Login = () => {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        onKeyPress={handleKeyPress}
+                        onKeyDown={handleKeyPress}
                         required
                       />
                       <label className="form-label">Password</label>
@@ -96,14 +101,14 @@ const Login = () => {
                     </div>
 
                     <div className="text-center mb-3">
-                      <a
-                        className="text-muted"
-                        href="#!"
+                      <button
+                        type="button"
+                        className="btn btn-link text-muted p-0"
                         style={{ fontSize: "0.9rem" }}
                         onClick={handleForgotPassword}
                       >
                         Forgot password?
-                      </a>
+                      </button>
                     </div>
 
                     <div className="d-flex align-items-center justify-content-center">

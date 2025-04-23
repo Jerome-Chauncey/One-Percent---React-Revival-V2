@@ -9,47 +9,41 @@ import Login from "./pages/Login";
 import Layout from "./components/Layout";
 import ForgotPassword from "./pages/ForgotPassword";
 import Register from "./pages/Register";
+import TruthAboutRetailBrokerageIndustry from "./pages/TruthAboutRetailBrokerageIndustry";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/forgotpassword",
+    element: <ForgotPassword />,
+  },
+
   {
     path: "/",
     element: <Layout />,
     children: [
+      { index: true, element: <Home /> },
+      { path: "news", element: <News /> },
+      { path: "livemarketprices", element: <LiveMarketPrices /> },
+      { path: "tradingtools", element: <TradingTools /> },
+      { path: "checklist", element: <Checklist /> },
+      { path: "team", element: <Team /> },
+
       {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/news",
-        element: <News />,
-      },
-      {
-        path: "/livemarketprices",
-        element: <LiveMarketPrices />,
-      },
-      {
-        path: "/tradingtools",
-        element: <TradingTools />,
-      },
-      {
-        path: "/checklist",
-        element: <Checklist />,
-      },
-      {
-        path: "/team",
-        element: <Team />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/forgotpassword",
-        element: <ForgotPassword />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
+        path: "truth",
+        element: (
+          <ProtectedRoute>
+            <TruthAboutRetailBrokerageIndustry />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
