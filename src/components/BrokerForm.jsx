@@ -61,7 +61,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="tradingConditions">
-            Are the trading conditions transparent?
+            1. Are the trading conditions transparent?
           </label>
           <div>
             <input
@@ -90,7 +90,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="regulatoryStatus">
-            Have you verified the broker's regulatory status?
+            2. Have you verified the broker's regulatory status?
           </label>
           <div>
             <input
@@ -119,7 +119,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="traderReviews">
-            Have you read independent trader reviews?
+            3. Have you read independent trader reviews?
           </label>
           <div>
             <input
@@ -148,7 +148,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="understandRisks">
-            Do you understand the risks associated with this market?
+            4. Do you understand the risks associated with this market?
           </label>
           <div>
             <input
@@ -177,7 +177,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="realisticReturns">
-            Is the broker offering realistic returns, or do they seem too good
+            5. Is the broker offering realistic returns, or do they seem too good
             to be true?
           </label>
           <div>
@@ -207,7 +207,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="withdrawalPolicies">
-            Have you checked the broker's withdrawal policies?
+            6. Have you checked the broker's withdrawal policies?
           </label>
           <div>
             <input
@@ -236,7 +236,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="customerSupport">
-            Does the broker provide proper customer support and dispute
+            7. Does the broker provide proper customer support and dispute
             resolution?
           </label>
           <div>
@@ -266,7 +266,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="hiddenFees">
-            Are there any hidden fees or unclear commission structures?
+            8. Are there any hidden fees or unclear commission structures?
           </label>
           <div>
             <input
@@ -295,7 +295,7 @@ export default function BrokerForm({ onSubmit }) {
         </div>
         <div className="mb-3">
           <label htmlFor="riskManagement">
-            Does the platform have proper risk management tools?
+            9. Does the platform have proper risk management tools?
           </label>
           <div>
             <input
