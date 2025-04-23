@@ -6,21 +6,34 @@ import "../styles/Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = () => {
     if (!email || !password) {
-      alert("Please enter both email and password.");
+      setError("Please enter both email and password.");
       return;
     }
 
+    // Simulating login logic
     console.log("Logging in with:", { email, password });
 
+    // Redirecting to homepage on successful login
     navigate("/"); 
   };
 
   const handleCreateAccount = () => {
     navigate("/register"); 
+  };
+
+  const handleForgotPassword = () => {
+    navigate("/forgot-password"); 
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleLogin();
+    }
   };
 
   return (
@@ -46,6 +59,8 @@ const Login = () => {
                   <form onSubmit={(e) => e.preventDefault()}>
                     <p className="text-center">Please login to your account</p>
 
+                    {error && <div className="text-danger text-center mb-3">{error}</div>}
+
                     <div className="form-outline mb-3">
                       <input
                         type="email"
@@ -53,8 +68,8 @@ const Login = () => {
                         placeholder="Email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        onKeyPress={handleKeyPress}
                         required
-
                       />
                       <label className="form-label">Username</label>
                     </div>
@@ -66,6 +81,7 @@ const Login = () => {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        onKeyPress={handleKeyPress}
                         required
                       />
                       <label className="form-label">Password</label>
@@ -86,6 +102,7 @@ const Login = () => {
                         className="text-muted"
                         href="#!"
                         style={{ fontSize: "0.9rem" }}
+                        onClick={handleForgotPassword}
                       >
                         Forgot password?
                       </a>
