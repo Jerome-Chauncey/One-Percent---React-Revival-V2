@@ -14,7 +14,7 @@ const ForgotPassword = () => {
 
     console.log(`Password reset link sent to ${email}`);
 
-    setMessage("If this email exists, a password reset link has been sent.");
+    setMessage("If this email exists, a password reset link has been sent to you.");
     setTimeout(() => {
       navigate("/login");
     }); 

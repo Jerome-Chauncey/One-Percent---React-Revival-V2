@@ -15,10 +15,8 @@ const Login = () => {
       return;
     }
 
-    // Simulating login logic
     console.log("Logging in with:", { email, password });
 
-    // Redirecting to homepage on successful login
     navigate("/"); 
   };
 
@@ -27,7 +25,7 @@ const Login = () => {
   };
 
   const handleForgotPassword = () => {
-    navigate("/forgot-password"); 
+    navigate("/forgotpassword"); 
   };
 
   const handleKeyPress = (e) => {

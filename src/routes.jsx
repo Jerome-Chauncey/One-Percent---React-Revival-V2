@@ -7,6 +7,8 @@ import Checklist from "./pages/Checklist";
 import Team from "./pages/Team";
 import Login from "./pages/Login";
 import Layout from "./components/Layout";
+import ForgotPassword from "./pages/ForgotPassword";
+import Register from "./pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/forgotpassword",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
