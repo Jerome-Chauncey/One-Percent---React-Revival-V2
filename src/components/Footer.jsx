@@ -15,38 +15,6 @@ const Footer = () => {
                 width="50"
               />
             </a>
-            <div className="social-network mt4 mt-sm-0 flex-wrap gap-2 gap-md-4 d-flex">
-              <a
-                href="https://www.instagram.com/chaunceyyy__/"
-                title="Instagram"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-link"
-              >
-                <img
-                  src="https://eq-cdn.equiti-me.com/website/documents/instagram_BOVNLvi.svg"
-                  alt="Instagram"
-                  className="social-icon"
-                  width="50"
-                  height="50"
-                />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/jerome-chauncey-100bab244"
-                title="Linkedin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-link"
-              >
-                <img
-                  src="https://eq-cdn.equiti-me.com/website/documents/linkedin_7mDS4co.svg"
-                  alt="LinkedIn"
-                  className="social-icon"
-                  width="50"
-                  height="50"
-                />
-              </a>
-            </div>
           </div>
         </div>
 

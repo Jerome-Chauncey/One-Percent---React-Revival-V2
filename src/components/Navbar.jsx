@@ -1,7 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark text-white sticky-top">
       <div className="container-fluid">
@@ -57,25 +66,24 @@ const Navbar = () => {
                 TEAM
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/login">
-                LOGIN
-              </NavLink>
-            </li>
+            {user ? (
+              <li className="nav-item">
+                <button
+                  className="btn btn-link nav-link text-white"
+                  onClick={handleLogout}
+                  style={{ cursor: "pointer" }}
+                >
+                  LOGOUT
+                </button>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <NavLink className="nav-link text-white" to="/login">
+                  LOGIN
+                </NavLink>
+              </li>
+            )}
           </ul>
-
-          {/* Search Form */}
-          <form className="d-flex ms-3" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search..."
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-light" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>
