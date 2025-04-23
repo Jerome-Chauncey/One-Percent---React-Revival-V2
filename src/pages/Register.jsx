@@ -1,42 +1,35 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CompanyLogo from "../icons/OnePercentLogo.png";
+import CompanyLogo from "../icons/OnePercentLogo.png"; 
 import "../styles/Login.css";
-import { AuthContext } from "../context/AuthContext";
 
-const Login = () => {
-  const { login } = useContext(AuthContext); 
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (!email || !password) {
-      setError("Please enter both email and password.");
+  const handleRegister = () => {
+    if (!email || !password || !confirmPassword || !username) {
+      setError("Please fill in all fields.");
       return;
     }
 
-    const success = login(email, password);
-    if (success) {
-      navigate("/truth");
-    } else {
-      setError("Invalid email or password.");
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
     }
+
+    console.log("Registering:", { email, password, username });
+
+    setError("");
+    navigate("/login");
   };
 
-  const handleCreateAccount = () => {
-    navigate("/register");
-  };
-
-  const handleForgotPassword = () => {
-    navigate("/forgotpassword");
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleLogin();
-    }
+  const handleLoginRedirect = () => {
+    navigate("/login");
   };
 
   return (
@@ -56,7 +49,7 @@ const Login = () => {
                   </div>
 
                   <form onSubmit={(e) => e.preventDefault()}>
-                    <p className="text-center">Please login to your account</p>
+                    <p className="text-center">Create a new account</p>
 
                     {error && (
                       <div className="text-danger text-center mb-3">
@@ -66,12 +59,23 @@ const Login = () => {
 
                     <div className="form-outline mb-3">
                       <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                      />
+                      <label className="form-label">Username</label>
+                    </div>
+
+                    <div className="form-outline mb-3">
+                      <input
                         type="email"
                         className="form-control"
                         placeholder="Email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        onKeyDown={handleKeyPress}
                         required
                       />
                       <label className="form-label">Email</label>
@@ -84,42 +88,40 @@ const Login = () => {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        onKeyDown={handleKeyPress}
                         required
                       />
                       <label className="form-label">Password</label>
+                    </div>
+
+                    <div className="form-outline mb-3">
+                      <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                      />
+                      <label className="form-label">Confirm Password</label>
                     </div>
 
                     <div className="text-center mb-2">
                       <button
                         className="btn btn-primary btn-block w-100"
                         type="button"
-                        onClick={handleLogin}
+                        onClick={handleRegister}
                       >
-                        Log in
+                        Register
                       </button>
                     </div>
 
                     <div className="text-center mb-3">
-                      <button
-                        type="button"
-                        className="btn btn-link text-muted p-0"
-                        style={{ fontSize: "0.9rem" }}
-                        onClick={handleForgotPassword}
-                      >
-                        Forgot password?
-                      </button>
-                    </div>
-
-                    <div className="d-flex align-items-center justify-content-center">
-                      <p className="mb-0 me-2">Don't have an account?</p>
-                      <button
-                        type="button"
-                        className="btn btn-outline-danger"
-                        onClick={handleCreateAccount}
-                      >
-                        Create new
-                      </button>
+                      <p style={{ fontSize: "0.9rem" }}>
+                        Already have an account?
+                        <a href="#!" onClick={handleLoginRedirect}>
+                          Login here
+                        </a>
+                      </p>
                     </div>
                   </form>
                 </div>
@@ -132,4 +134,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
