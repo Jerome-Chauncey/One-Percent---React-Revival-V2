@@ -17,7 +17,7 @@ const Navbar = () => {
         {/* Logo + Brand Link */}
         <a
           className="navbar-brand text-white"
-          href="https://jerome-chauncey.github.io/One-Percent/"
+          href="/"
         >
           <img
             src="/OnePercentLogo.png"
