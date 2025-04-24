@@ -216,4 +216,3 @@ function BottomDisclaimer() {
 }
 
 export default BottomDisclaimer;
-gi
