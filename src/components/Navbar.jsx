@@ -1,95 +1,83 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate("/login");
   };
 
+  const navItems = [
+    { to: "/news", text: "NEWS" },
+    { to: "/livemarketprices", text: "LIVE MARKET PRICES" },
+    { to: "/tradingtools", text: "TRADING TOOLS" },
+    { to: "/checklist", text: "CHECKLIST" },
+    { to: "/team", text: "TEAM" },
+    { to: "/login", text: "LOGIN" },
+  ];
+
   return (
-    <nav className="navbar navbar-expand-lg bg-dark text-white sticky-top">
-      <div className="container-fluid">
-        {/* Logo + Brand Link */}
-        <a
-          className="navbar-brand text-white"
-          href="/"
-        >
+    <nav className="navbar navbar-dark" style={{ backgroundColor: "#03045E" }}>
+      <div className="container">
+        <a className="navbar-brand" href="/">
           <img
             src="/OnePercentLogo.png"
             alt="One Percent Logo"
-            className="Logo"
-            height="50"
-            width="50"
+            height="40"
+            width="40"
           />
         </a>
 
-        {/* Toggler Button */}
-        <button
-          className="navbar-toggler bg-white"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        {/* Mobile Menu */}
+        <div className="d-lg-none">
+          <button
+            className="navbar-toggler"
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+        </div>
 
-        {/* Nav Links */}
-        <div className="collapse navbar-collapse" id="navbarNav">
+        {/* Mobile Dropdown */}
+        <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/news">
-                NEWS
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/livemarketprices">
-                LIVE MARKET PRICES
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/tradingtools">
-                TRADING TOOLS
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/checklist">
-                CHECKLIST
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/team">
-                TEAM
-              </NavLink>
-            </li>
-            {user ? (
-              <>
-                <li className="nav-item">
-                  <NavLink className="nav-link text-white" to="/truth">
-                    TRUTH ABOUT RETAIL BROKERAGE
-                  </NavLink>
-                </li>
-                <li className="nav-item">
-                  <button
-                    className="btn btn-link nav-link text-white"
-                    onClick={handleLogout}
-                    style={{ cursor: "pointer" }}
-                  >
-                    LOGOUT
-                  </button>
-                </li>
-              </>
-            ) : (
-              <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/login">
-                  LOGIN
+            {navItems.map((item) => (
+              <li className="nav-item" key={item.to}>
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                  to={item.to}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.text}
                 </NavLink>
               </li>
-            )}
+            ))}
+          </ul>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="d-none d-lg-block">
+          <ul className="navbar-nav ms-auto d-flex flex-row gap-3">
+            {navItems.map((item) => (
+              <li className="nav-item" key={item.to}>
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                  to={item.to}
+                >
+                  {item.text}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
