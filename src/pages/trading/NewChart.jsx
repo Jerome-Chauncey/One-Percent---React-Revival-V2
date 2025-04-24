@@ -30,13 +30,15 @@ const NewChart = () => {
     <div
       className="tradingview-widget-container"
       style={{
-        width: "100vw",
+        width: "100%",
+        maxWidth: "100vw",
         height: "100vh",
+        overflowX: "hidden",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#131722", // Optional: to match chart theme
+        backgroundColor: "#131722",
       }}
     >
       <div
@@ -44,7 +46,7 @@ const NewChart = () => {
         ref={chartRef}
         style={{
           width: "100%",
-          height: "calc(100% - 40px)", // reserve space for footer text
+          height: "calc(100% - 40px)",
         }}
       ></div>
       <div
@@ -63,11 +65,11 @@ const NewChart = () => {
           target="_blank"
           style={{ color: "#42a5f5", textDecoration: "none" }}
         >
+          Chart by TradingView
         </a>
       </div>
     </div>
   );
-  
 };
 
 export default NewChart;
