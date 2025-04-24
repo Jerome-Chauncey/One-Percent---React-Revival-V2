@@ -5,19 +5,26 @@ import "../styles/Login.css";
 import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
-  const { login } = useContext(AuthContext); 
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
     }
 
-    const success = login(email, password);
+    setError("");
+    setLoading(true);
+
+    const success = await login(email, password);
+
+    setLoading(false);
+
     if (success) {
       navigate("/truth");
     } else {
@@ -65,29 +72,29 @@ const Login = () => {
                     )}
 
                     <div className="form-outline mb-3">
+                      <label className="form-label">Email</label>
                       <input
                         type="email"
                         className="form-control"
-                        placeholder="Email address"
+                        placeholder="Enter Email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         onKeyDown={handleKeyPress}
                         required
                       />
-                      <label className="form-label">Email</label>
                     </div>
 
                     <div className="form-outline mb-3">
+                      <label className="form-label">Password</label>
                       <input
                         type="password"
                         className="form-control"
-                        placeholder="Password"
+                        placeholder="Enter Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         onKeyDown={handleKeyPress}
                         required
                       />
-                      <label className="form-label">Password</label>
                     </div>
 
                     <div className="text-center mb-2">
@@ -95,8 +102,9 @@ const Login = () => {
                         className="btn btn-primary btn-block w-100"
                         type="button"
                         onClick={handleLogin}
+                        disabled={loading}
                       >
-                        Log in
+                        {loading ? "Logging in..." : "Log in"}
                       </button>
                     </div>
 
