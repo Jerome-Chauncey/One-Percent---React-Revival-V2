@@ -21,6 +21,10 @@ const Navbar = () => {
   ];
 
   const loginNavItem = { to: "/login", text: "LOG IN" };
+  const truthPageNavItem = {
+    to: "/truth",
+    text: "TRUTH",
+  };
 
   return (
     <nav className="navbar navbar-dark" style={{ backgroundColor: "#03045E" }}>
@@ -61,6 +65,19 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ))}
+            {user && (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                  to={truthPageNavItem.to}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {truthPageNavItem.text}
+                </NavLink>
+              </li>
+            )}
             {!user && (
               <li className="nav-item">
                 <NavLink
@@ -106,6 +123,19 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ))}
+            {user && (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                  to={truthPageNavItem.to}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {truthPageNavItem.text}
+                </NavLink>
+              </li>
+            )}
             {!user && (
               <li className="nav-item">
                 <NavLink
