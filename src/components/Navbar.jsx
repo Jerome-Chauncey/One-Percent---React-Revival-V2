@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate("/");
   };
 
   const navItems = [
@@ -18,8 +18,9 @@ const Navbar = () => {
     { to: "/tradingtools", text: "TRADING TOOLS" },
     { to: "/checklist", text: "CHECKLIST" },
     { to: "/team", text: "TEAM" },
-    { to: "/login", text: "LOGIN" },
   ];
+
+  const loginNavItem = { to: "/login", text: "LOG IN" };
 
   return (
     <nav className="navbar navbar-dark" style={{ backgroundColor: "#03045E" }}>
@@ -60,6 +61,33 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ))}
+            {!user && (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                  to={loginNavItem.to}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {loginNavItem.text}
+                </NavLink>
+              </li>
+            )}
+            {user && (
+              <li className="nav-item">
+                <button
+                  className="btn btn-link nav-link"
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  LOGOUT
+                </button>
+              </li>
+            )}
           </ul>
         </div>
 
@@ -78,6 +106,29 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ))}
+            {!user && (
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) =>
+                    `nav-link ${isActive ? "active" : ""}`
+                  }
+                  to={loginNavItem.to}
+                >
+                  {loginNavItem.text}
+                </NavLink>
+              </li>
+            )}
+            {user && (
+              <li className="nav-item">
+                <button
+                  className="btn btn-link nav-link"
+                  onClick={handleLogout}
+                  style={{ cursor: "pointer" }}
+                >
+                  LOGOUT
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>
