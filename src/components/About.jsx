@@ -1,106 +1,79 @@
-import React from "react";
-
-const features = [
-  {
-    title: "Integrity at the Core",
-    description:
-      "We believe integrity is non-negotiable. One Percent empowers traders to act with transparency and fairness.",
-    image: "f1.jpeg",
-  },
-  {
-    title: "Proactive Self-Regulation",
-    description:
-      "We don’t wait for regulations to catch up. We create our own standard of excellence through self-accountability.",
-    image: "f2.jpeg",
-  },
-  {
-    title: "Community-Led Trust",
-    description:
-      "We’re building a culture of trust where professionals hold each other accountable in restoring faith in the markets.",
-    image: "f3.jpeg",
-  },
-  {
-    title: "Elevating Market Ethics",
-    description:
-      "One Percent is redefining what it means to trade with honor. We educate, inspire, and lead by example.",
-    image: "f4.jpeg",
-  },
-];
-
 const About = () => {
+  const features = [
+    {
+      title: "Our Mission",
+      description:
+        "Empowering traders with tools and knowledge for market integrity.",
+      icon: "bi bi-bullseye",
+    },
+    {
+      title: "Our Vision",
+      description:
+        "Creating a self-regulated trading environment built on trust.",
+      icon: "bi bi-eye",
+    },
+    {
+      title: "Our Values",
+      description:
+        "Integrity, transparency, and fairness in all market operations.",
+      icon: "bi bi-shield-check",
+    },
+  ];
+
   return (
-    <div
-      className="about-section"
-      style={{ backgroundColor: "#111", color: "white", padding: "50px 20px" }}
-    >
-      <h2
-        style={{ textAlign: "center", marginBottom: "40px", color: "#f2b705" }}
+    <>
+      <div className="border-top border-info opacity-25"></div>
+
+      <section
+        className="about-section py-5"
+        style={{ backgroundColor: "#03045E" }}
       >
-        Who We Are
-      </h2>
-      <p
-        style={{
-          textAlign: "center",
-          maxWidth: "700px",
-          margin: "0 auto 60px",
-          color: "#ccc",
-          fontSize: "16px",
-          lineHeight: "1.8",
-        }}
-      >
-        One Percent empowers traders and financial professionals to uphold
-        integrity in the markets. Rather than waiting for regulators to act, we
-        promote proactive self-regulation to ensure fairness, transparency, and
-        trust.
-      </p>
-      <div
-        className="feature-container"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "30px",
-        }}
-      >
-        {features.map((feature, index) => (
-          <div
-            key={index}
-            className="feature-box"
-            style={{
-              backgroundColor: "#1c1c1c",
-              borderRadius: "10px",
-              width: "300px",
-              padding: "20px",
-              textAlign: "center",
-            }}
-          >
-            <img
-              src={feature.image}
-              alt={feature.title}
-              style={{
-                width: "100%",
-                borderRadius: "10px",
-                height: "180px",
-                objectFit: "cover",
-              }}
-            />
-            <h3 style={{ marginTop: "20px", color: "#f2b705" }}>
-              {feature.title}
-            </h3>
-            <p
-              style={{
-                marginTop: "10px",
-                fontSize: "14px",
-                lineHeight: "1.6",
-                color: "#ccc",
-              }}
-            >
-              {feature.description}
-            </p>
+        <div className="container position-relative">
+          <div className="card bg-opacity-10 bg-info border-0 shadow-sm p-4">
+            <div className="row justify-content-center">
+              <div className="col-lg-8 text-center mb-5">
+                <h2
+                  className="display-4 fw-bold mb-4"
+                  style={{ color: "#4CC9F0" }}
+                >
+                  Who We Are
+                </h2>
+                <p className="lead mb-5" style={{ color: "#CAF0F8" }}>
+                  One Percent empowers traders and financial professionals to
+                  uphold integrity in the markets. Rather than waiting for
+                  regulators to act, we promote proactive self-regulation to
+                  ensure fairness, transparency, and trust.
+                </p>
+              </div>
+            </div>
+
+            <div className="row g-4 justify-content-center">
+              {features.map((feature, index) => (
+                <div key={index} className="col-md-4">
+                  <div className="card h-100 bg-transparent border border-info border-opacity-25">
+                    <div className="card-body text-center">
+                      <i
+                        className={`${feature.icon} fs-1 mb-3`}
+                        style={{ color: "#4CC9F0" }}
+                      ></i>
+                      <h3
+                        className="card-title h4 mb-3"
+                        style={{ color: "#4CC9F0" }}
+                      >
+                        {feature.title}
+                      </h3>
+                      <p className="card-text" style={{ color: "#CAF0F8" }}>
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      </section>
+    </>
   );
 };
 
