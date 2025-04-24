@@ -69,42 +69,31 @@ const Register = () => {
                     )}
 
                     <div className="form-outline mb-3">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                      />
-                      <label className="form-label">Username</label>
-                    </div>
-
-                    <div className="form-outline mb-3">
+                      <label className="form-label">Email</label>
                       <input
                         type="email"
                         className="form-control"
-                        placeholder="Email address"
+                        placeholder="Enter Your Email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                       />
-                      <label className="form-label">Email</label>
                     </div>
 
                     <div className="form-outline mb-3">
+                      <label className="form-label">Password</label>
                       <input
                         type="password"
                         className="form-control"
-                        placeholder="Password"
+                        placeholder="Enter Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
-                      <label className="form-label">Password</label>
                     </div>
 
                     <div className="form-outline mb-3">
+                      <label className="form-label">Confirm Password</label>
                       <input
                         type="password"
                         className="form-control"
@@ -113,7 +102,6 @@ const Register = () => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                       />
-                      <label className="form-label">Confirm Password</label>
                     </div>
 
                     <div className="text-center mb-2">
