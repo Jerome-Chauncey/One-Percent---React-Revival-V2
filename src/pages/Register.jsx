@@ -34,7 +34,7 @@ const Register = () => {
     setLoading(false);
 
     if (result.success) {
-      navigate("/login");
+      navigate("/truth");
     } else {
       setError(result.message || "Registration failed. Please try again.");
       shakeForm();

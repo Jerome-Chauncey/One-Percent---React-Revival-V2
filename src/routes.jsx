@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import TruthAboutRetailBrokerageIndustry from "./pages/TruthAboutRetailBrokerageIndustry";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+
 const router = createBrowserRouter([
   {
     path: "/login",
@@ -25,7 +26,6 @@ const router = createBrowserRouter([
     path: "/forgotpassword",
     element: <ForgotPassword />,
   },
-
   {
     path: "/",
     element: <Layout />,
