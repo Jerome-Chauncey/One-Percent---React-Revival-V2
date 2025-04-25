@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async (username, email, password) => {
+  const register = async (email, password) => {
     try {
       const response = await fetch(
         "https://onepercentrevivalv2-users.onrender.com/users",
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username, email, password }),
+          body: JSON.stringify({ email, password }),
         }
       );
 
