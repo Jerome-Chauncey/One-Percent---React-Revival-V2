@@ -1,68 +1,123 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+const fadeDuration = 300; // fade transition duration in ms
 
 const BrokerEducation = () => {
   const [activeTab, setActiveTab] = useState("models");
+  const [fadeState, setFadeState] = useState("fade-in"); // for fade animation
 
-  const handleTabClick = (tab) => setActiveTab(tab);
+  const handleTabClick = (tab) => {
+    if (tab === activeTab) return;
+    setFadeState("fade-out");
+    setTimeout(() => {
+      setActiveTab(tab);
+      setFadeState("fade-in");
+    }, fadeDuration);
+  };
+
+  // Colors from your screenshot
+  const colors = {
+    background: "#031B4E", // deep navy
+    highlight: "#00B0FF", // bright blue for active tabs and headings
+    textLight: "#A9D6FF", // light blue text
+    cardBg: "#0B2D91", // slightly lighter navy for cards
+  };
 
   return (
-    <div className="container py-4">
-      <h2 className="mb-4">Forex Broker Education</h2>
-      <ul className="nav nav-pills mb-3">
-        <li className="nav-item">
-          <a
-            className={`nav-link ${activeTab === "models" ? "active" : ""}`}
-            href="#"
-            onClick={() => handleTabClick("models")}
-          >
-            Models & Risk
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className={`nav-link ${activeTab === "pricing" ? "active" : ""}`}
-            href="#"
-            onClick={() => handleTabClick("pricing")}
-          >
-            Fair Pricing
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className={`nav-link ${activeTab === "legit" ? "active" : ""}`}
-            href="#"
-            onClick={() => handleTabClick("legit")}
-          >
-            Is Your Broker Legit?
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className={`nav-link ${activeTab === "checklist" ? "active" : ""}`}
-            href="#"
-            onClick={() => handleTabClick("checklist")}
-          >
-            Trading Checklist
-          </a>
-        </li>
-        <li className="nav-item">
-          <a
-            className={`nav-link ${activeTab === "structure" ? "active" : ""}`}
-            href="#"
-            onClick={() => handleTabClick("structure")}
-          >
-            Market Structure
-          </a>
-        </li>
+    <div
+      className="container py-4"
+      style={{
+        backgroundColor: colors.background,
+        minHeight: "100vh",
+        color: colors.textLight,
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      }}
+    >
+      <h2
+        className="mb-4"
+        style={{
+          color: colors.highlight,
+          userSelect: "none",
+          fontWeight: "700",
+        }}
+      >
+        Forex Broker Education
+      </h2>
+
+      <ul className="nav nav-pills mb-3 flex-wrap" role="tablist">
+        {[
+          { id: "models", label: "Models & Risk" },
+          { id: "pricing", label: "Fair Pricing" },
+          { id: "legit", label: "Is Your Broker Legit?" },
+          { id: "checklist", label: "Trading Checklist" },
+          { id: "structure", label: "Market Structure" },
+        ].map(({ id, label }) => (
+          <li className="nav-item" key={id}>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handleTabClick(id);
+              }}
+              className={`nav-link ${
+                activeTab === id ? "active" : "text-light"
+              }`}
+              style={{
+                cursor: "pointer",
+                backgroundColor:
+                  activeTab === id ? colors.highlight : "transparent",
+                color: activeTab === id ? colors.background : colors.textLight,
+                fontWeight: activeTab === id ? "600" : "400",
+                borderRadius: "0.375rem",
+                marginRight: "6px",
+                marginBottom: "6px",
+                transition: "background-color 0.3s ease, color 0.3s ease",
+                userSelect: "none",
+              }}
+              onMouseEnter={(e) => {
+                if (activeTab !== id) {
+                  e.currentTarget.style.backgroundColor =
+                    "rgba(0, 176, 255, 0.2)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeTab !== id) {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                }
+              }}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
       </ul>
 
-      <div className="tab-content">
+      <div
+        className={`tab-content ${fadeState}`}
+        style={{
+          transition: `opacity ${fadeDuration}ms ease-in-out`,
+          opacity: fadeState === "fade-in" ? 1 : 0,
+        }}
+      >
         {activeTab === "models" && (
-          <div className="tab-pane fade show active">
-            <h4>Broker Models & Risk Management</h4>
+          <div className="tab-pane show active">
+            <h4 style={{ color: colors.highlight }}>
+              Broker Models & Risk Management
+            </h4>
             <div className="table-responsive">
-              <table className="table table-bordered table-striped text-center">
-                <thead>
+              <table
+                className="table table-bordered table-striped text-center"
+                style={{
+                  backgroundColor: colors.cardBg,
+                  color: colors.textLight,
+                }}
+              >
+                <thead
+                  style={{
+                    backgroundColor: colors.highlight,
+                    color: colors.background,
+                  }}
+                >
                   <tr>
                     <th>Model</th>
                     <th>Description</th>
@@ -117,49 +172,67 @@ const BrokerEducation = () => {
           </div>
         )}
         {activeTab === "pricing" && (
-          <div className="tab-pane fade show active">
-            <h4>Are the Prices You Get Fair?</h4>
-            <div className="tab-pane fade show active">
-              <div className="row g-3">
-                <div className="col-md-4">
-                  <div className="card h-100 border-success">
-                    <div className="card-body">
-                      <h5 className="card-title text-success">Fair Pricing</h5>
-                      <ul className="mb-0">
-                        <li>Tied to Interbank Rates (A-Book/ECN model)</li>
-                        <li>Tight spreads = less broker interference</li>
-                        <li>Regulated brokers = pricing transparency</li>
-                      </ul>
-                    </div>
+          <div className="tab-pane show active">
+            <h4 style={{ color: colors.highlight }}>
+              Are the Prices You Get Fair?
+            </h4>
+            <div className="row g-3">
+              <div className="col-md-4">
+                <div
+                  className="card h-100 border-success"
+                  style={{
+                    backgroundColor: colors.cardBg,
+                    color: colors.textLight,
+                  }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title text-success">Fair Pricing</h5>
+                    <ul className="mb-0">
+                      <li>Tied to Interbank Rates (A-Book/ECN model)</li>
+                      <li>Tight spreads = less broker interference</li>
+                      <li>Regulated brokers = pricing transparency</li>
+                    </ul>
                   </div>
                 </div>
+              </div>
 
-                <div className="col-md-4">
-                  <div className="card h-100 border-danger">
-                    <div className="card-body">
-                      <h5 className="card-title text-danger">
-                        When Prices Might Be Manipulated
-                      </h5>
-                      <ul className="mb-0">
-                        <li>B-Book brokers may manipulate stop-loss levels</li>
-                        <li>Widened spreads during news events</li>
-                        <li>Frequent slippage or requotes</li>
-                        <li>Stop-hunting behavior</li>
-                      </ul>
-                    </div>
+              <div className="col-md-4">
+                <div
+                  className="card h-100 border-danger"
+                  style={{
+                    backgroundColor: colors.cardBg,
+                    color: colors.textLight,
+                  }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title text-danger">
+                      When Prices Might Be Manipulated
+                    </h5>
+                    <ul className="mb-0">
+                      <li>B-Book brokers may manipulate stop-loss levels</li>
+                      <li>Widened spreads during news events</li>
+                      <li>Frequent slippage or requotes</li>
+                      <li>Stop-hunting behavior</li>
+                    </ul>
                   </div>
                 </div>
+              </div>
 
-                <div className="col-md-4">
-                  <div className="card h-100 border-primary">
-                    <div className="card-body">
-                      <h5 className="card-title text-primary">How to Check</h5>
-                      <ul className="mb-0">
-                        <li>Compare prices on TradingView/Bloomberg</li>
-                        <li>Use ECN/STP brokers</li>
-                        <li>Look for low slippage, fast execution</li>
-                      </ul>
-                    </div>
+              <div className="col-md-4">
+                <div
+                  className="card h-100 border-primary"
+                  style={{
+                    backgroundColor: colors.cardBg,
+                    color: colors.textLight,
+                  }}
+                >
+                  <div className="card-body">
+                    <h5 className="card-title text-primary">How to Check</h5>
+                    <ul className="mb-0">
+                      <li>Compare prices on TradingView/Bloomberg</li>
+                      <li>Use ECN/STP brokers</li>
+                      <li>Look for low slippage, fast execution</li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -167,11 +240,19 @@ const BrokerEducation = () => {
           </div>
         )}
         {activeTab === "legit" && (
-          <div className="tab-pane fade show active">
-            <h4>Is Your Forex Broker Legit?</h4>
+          <div className="tab-pane show active">
+            <h4 style={{ color: colors.highlight }}>
+              Is Your Forex Broker Legit?
+            </h4>
             <div className="row g-3">
               <div className="col-md-4">
-                <div className="card h-100 border-success">
+                <div
+                  className="card h-100 border-success"
+                  style={{
+                    backgroundColor: colors.cardBg,
+                    color: colors.textLight,
+                  }}
+                >
                   <div className="card-body">
                     <h5 className="card-title text-success">
                       Signs of a Real Broker
@@ -187,7 +268,13 @@ const BrokerEducation = () => {
               </div>
 
               <div className="col-md-4">
-                <div className="card h-100 border-danger">
+                <div
+                  className="card h-100 border-danger"
+                  style={{
+                    backgroundColor: colors.cardBg,
+                    color: colors.textLight,
+                  }}
+                >
                   <div className="card-body">
                     <h5 className="card-title text-danger">Red Flags</h5>
                     <ul className="mb-0">
@@ -201,7 +288,13 @@ const BrokerEducation = () => {
               </div>
 
               <div className="col-md-4">
-                <div className="card h-100 border-primary">
+                <div
+                  className="card h-100 border-primary"
+                  style={{
+                    backgroundColor: colors.cardBg,
+                    color: colors.textLight,
+                  }}
+                >
                   <div className="card-body">
                     <h5 className="card-title text-primary">How to Verify</h5>
                     <ul className="mb-0">
@@ -218,9 +311,17 @@ const BrokerEducation = () => {
           </div>
         )}
         {activeTab === "checklist" && (
-          <div className="tab-pane fade show active">
-            <h4>Broker Legitimacy Checklist</h4>
-            <div className="card border-warning mb-3">
+          <div className="tab-pane show active">
+            <h4 style={{ color: colors.highlight }}>
+              Broker Legitimacy Checklist
+            </h4>
+            <div
+              className="card border-warning mb-3"
+              style={{
+                backgroundColor: colors.cardBg,
+                color: colors.textLight,
+              }}
+            >
               <div className="card-body">
                 <ol className="mb-0">
                   <li>Where is the broker located?</li>
@@ -236,10 +337,15 @@ const BrokerEducation = () => {
           </div>
         )}
         {activeTab === "structure" && (
-          <div className="tab-pane fade show active">
-            <h4>How the Market is Set Up</h4>
+          <div className="tab-pane show active">
+            <h4 style={{ color: colors.highlight }}>
+              How the Market is Set Up
+            </h4>
 
-            <div className="card-body text-center">
+            <div
+              className="card-body text-center"
+              style={{ color: colors.textLight }}
+            >
               <h5 className="card-title">Market Structure Flow</h5>
               <img
                 src="/images/smart.png"
@@ -259,7 +365,13 @@ const BrokerEducation = () => {
               </div>
             </div>
 
-            <div className="card border-dark mb-4">
+            <div
+              className="card border-dark mb-4"
+              style={{
+                backgroundColor: colors.cardBg,
+                color: colors.textLight,
+              }}
+            >
               <div className="card-body">
                 <h5>Business: Industry Appraisal</h5>
                 <ul>
@@ -273,7 +385,13 @@ const BrokerEducation = () => {
               </div>
             </div>
 
-            <div className="card border-dark mb-4">
+            <div
+              className="card border-dark mb-4"
+              style={{
+                backgroundColor: colors.cardBg,
+                color: colors.textLight,
+              }}
+            >
               <div className="card-body">
                 <h5>Exchange Ownership</h5>
                 <ul>
@@ -294,7 +412,13 @@ const BrokerEducation = () => {
               </div>
             </div>
 
-            <div className="card border-dark mb-4">
+            <div
+              className="card border-dark mb-4"
+              style={{
+                backgroundColor: colors.cardBg,
+                color: colors.textLight,
+              }}
+            >
               <div className="card-body">
                 <h5>Trading Mindset Notes</h5>
                 <ul>
@@ -317,7 +441,13 @@ const BrokerEducation = () => {
               </div>
             </div>
 
-            <div className="card border-danger mb-4">
+            <div
+              className="card border-danger mb-4"
+              style={{
+                backgroundColor: colors.cardBg,
+                color: colors.textLight,
+              }}
+            >
               <div className="card-body">
                 <h5>The Broker Conflict of Interest</h5>
                 <div className="alert alert-danger">
@@ -348,7 +478,13 @@ const BrokerEducation = () => {
               </div>
             </div>
 
-            <div className="card border-warning mb-4">
+            <div
+              className="card border-warning mb-4"
+              style={{
+                backgroundColor: colors.cardBg,
+                color: colors.textLight,
+              }}
+            >
               <div className="card-body">
                 <h5>Broker Revenue Model</h5>
                 <div className="row">
@@ -390,7 +526,13 @@ const BrokerEducation = () => {
               </div>
             </div>
 
-            <div className="card border-info mb-4">
+            <div
+              className="card border-info mb-4"
+              style={{
+                backgroundColor: colors.cardBg,
+                color: colors.textLight,
+              }}
+            >
               <div className="card-body">
                 <h5>Smart Money vs Dumb Money</h5>
                 <div className="row">
@@ -433,15 +575,29 @@ const BrokerEducation = () => {
               </div>
             </div>
 
-            <div className="card border-secondary mb-4">
+            <div
+              className="card border-secondary mb-4"
+              style={{
+                backgroundColor: colors.cardBg,
+                color: colors.textLight,
+              }}
+            >
               <div className="card-body">
                 <h5>Common Myths & Red Flags</h5>
                 <div className="alert alert-warning">
                   "The system is designed to maintain the status quo - the
                   biggest payers (banks, hedge funds) all work together!"
                 </div>
-                <table className="table table-bordered">
-                  <thead>
+                <table
+                  className="table table-bordered"
+                  style={{ color: colors.textLight }}
+                >
+                  <thead
+                    style={{
+                      backgroundColor: colors.highlight,
+                      color: colors.background,
+                    }}
+                  >
                     <tr>
                       <th>Myth</th>
                       <th>Reality</th>
