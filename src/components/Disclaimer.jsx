@@ -17,7 +17,7 @@ function Disclaimer() {
                 style={{ color: "#CAF0F8" }}
               >
                 <i
-                  className="bi bi-info-circle-fill me-3 fs-5"
+                  className="bi bi-info-circle-fill  fs-5"
                   style={{ color: "#48CAE4" }}
                 ></i>
                 Online Forex/CFDs are complex instruments and come with a high
