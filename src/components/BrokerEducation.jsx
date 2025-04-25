@@ -239,9 +239,29 @@ const BrokerEducation = () => {
           <div className="tab-pane fade show active">
             <h4>How the Market is Set Up</h4>
 
+            <div className="card-body text-center">
+              <h5 className="card-title">Market Structure Flow</h5>
+              <img
+                src="/images/smart.png"
+                alt="Market Structure Diagram"
+                className="img-fluid"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  border: "1px solid #eee",
+                }}
+              />
+              <div className="mt-3 text-muted">
+                <small>
+                  Diagram showing the relationship between investment banks,
+                  brokers, and retail traders
+                </small>
+              </div>
+            </div>
+
             <div className="card border-dark mb-4">
               <div className="card-body">
-                <h5 className="card-title">Business: Industry Appraisal</h5>
+                <h5>Business: Industry Appraisal</h5>
                 <ul>
                   <li>Who are the winners?</li>
                   <li>Who are the losers?</li>
@@ -255,156 +275,226 @@ const BrokerEducation = () => {
 
             <div className="card border-dark mb-4">
               <div className="card-body">
-              <h5>Exchange Ownership</h5>
-              <ul>
-                <li>Intercontinental Exchange (ICE) owns NYSE / Euronext</li>
-                <li>
-                  Chicago Mercantile Exchange (CME) owns CBOT, NYMEX, COMEX
-                </li>
-                <li>
-                  Monopolistic / Duopolistic structures may lead to
-                  protectionism & maintenance of the status quo.
-                </li>
-                <li>Smart Money vs Dumb Money</li>
-                <li>
-                  <strong>Negative of Monopoly:</strong> Pricing Power & Control
-                </li>
-              </ul>
-              </div>
-            </div>
-
-            <div className="card border-dark mb-4">
-              <div className="card-body">
-              <h5>Trading Mindset Notes</h5>
-              <ul>
-                <li>
-                  Monetary Policy = control of money supply & its distribution
-                  channels.
-                </li>
-                <li>
-                  Quantitative Easing = central bank buys financial assets to
-                  stimulate economy.
-                </li>
-                <li>
-                  Build a strong educational foundation understand volatility
-                  and go where the money is.
-                </li>
-                <li>
-                  Don't define yourself by one asset class or time horizon.
-                </li>
-              </ul>
-              </div>
-            </div>
-          </div>
-        )}
-       {activeTab === "structure" && (
-          <div className="tab-pane fade show active">
-            <h4>Market Structure & Industry Insights</h4>
-
-            <div className="card border-secondary mb-4">
-              <div className="card-body">
-                <h5 className="card-title">Regulators Are Passive and Reactionary</h5>
+                <h5>Exchange Ownership</h5>
                 <ul>
-                  <li>In 2010, Contracts for Difference (CFDs) were banned in the US for retail traders because of major losses during the Finomax Crisis.</li>
-                  <li>The product was seen as a gambling mechanism due to 10x leverage.</li>
-                  <li>In 2010, IB Contracts were banned in Singapore due to conflict of interest.</li>
-                  <li>This is typical of regulators – they often act after the event.</li>
-                  <li>History shows retail traders must self-regulate rather than depend on regulators.</li>
-                </ul>
-                <p><strong>Note:</strong> IB = Introducing Broker. They refer clients to brokers and earn a commission for doing so.</p>
-              </div>
-            </div>
-
-            <div className="card border-info mb-4">
-              <div className="card-body">
-                <h5 className="card-title">Financial Market Volatility</h5>
-                <ul>
-                  <li>Volatility in Equities, Currencies, Commodities, and Rates has dropped since the financial crisis.</li>
-                  <li>Three Main Reasons:
-                    <ul>
-                      <li><strong>Monetary Policy:</strong> Low interest rates and QE suppress volatility via relative yield, insurance, and inflation concerns.</li>
-                      <li><strong>Technology:</strong> High-frequency trading reduces short-term opportunities for retail traders.</li>
-                      <li><strong>Liquidity:</strong> More participants increase liquidity, reducing volatility and profit potential.</li>
-                    </ul>
+                  <li>Intercontinental Exchange (ICE) owns NYSE / Euronext</li>
+                  <li>
+                    Chicago Mercantile Exchange (CME) owns CBOT, NYMEX, COMEX
                   </li>
-                  <li>Professionals follow market conditions. Retail traders often try to predict or oppose the market.</li>
+                  <li>
+                    Monopolistic / Duopolistic structures may lead to
+                    protectionism & maintenance of the status quo.
+                  </li>
+                  <li>Smart Money vs Dumb Money</li>
+                  <li>
+                    <strong>Negative of Monopoly:</strong> Pricing Power &
+                    Control
+                  </li>
                 </ul>
               </div>
             </div>
 
             <div className="card border-dark mb-4">
               <div className="card-body">
-                <h5 className="card-title">Professional vs Retail Traders</h5>
-                <p><strong>Approach</strong></p>
-                <table className="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Professional Trader / HF Manager</th>
-                      <th>Retail / Independent / Private Trader</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Systematic, long/short portfolios, fundamental analysis dominant.</td>
-                      <td>Focus on short-term trades, quick returns, not monitoring volatility.</td>
-                    </tr>
-                    <tr>
-                      <td>Risk-managed, diversified portfolios with 10–20 positions.</td>
-                      <td>Few positions, often speculative (e.g. EUR/USD, SP500).</td>
-                    </tr>
-                    <tr>
-                      <td>Capital preservation and long-term growth.</td>
-                      <td>High expectations, often results in capital destruction.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div className="card border-warning mb-4">
-              <div className="card-body">
-                <h5 className="card-title">Margin and Leverage: 90/90/90 Rule</h5>
-                <p>90% of retail traders lose 90% of their margin within 90 days.</p>
+                <h5>Trading Mindset Notes</h5>
                 <ul>
-                  <li>CFD/Spread betting traders do not own underlying assets – they trade contracts.</li>
-                  <li>Margin = collateral used to open leveraged positions.</li>
-                  <li>Initial margin vs. variable margin: the former is deposited, the latter is used for active trades.</li>
-                  <li>High leverage (e.g., 100x) can wipe out traders with only a 1% market move.</li>
-                  <li>Forex margin requirement = 1% (e.g., $1000 margin for $100,000 position).</li>
+                  <li>
+                    Monetary Policy = control of money supply & its distribution
+                    channels.
+                  </li>
+                  <li>
+                    Quantitative Easing = central bank buys financial assets to
+                    stimulate economy.
+                  </li>
+                  <li>
+                    Build a strong educational foundation understand volatility
+                    and go where the money is.
+                  </li>
+                  <li>
+                    Don't define yourself by one asset class or time horizon.
+                  </li>
                 </ul>
               </div>
             </div>
 
             <div className="card border-danger mb-4">
               <div className="card-body">
-                <h5 className="card-title">Retail Broker Conflicts of Interest</h5>
+                <h5>The Broker Conflict of Interest</h5>
+                <div className="alert alert-danger">
+                  <strong>
+                    "They have a 90% win rate on their losing client traders."
+                  </strong>{" "}
+                  Brokers are incentivized for you to lose money and take the
+                  other side of your losing trades.
+                </div>
                 <ul>
-                  <li>Retail trading infrastructure isn't designed for client benefit.</li>
-                  <li>Retail brokers profit from:
-                    <ul>
-                      <li>Wider spreads</li>
-                      <li>Added commissions</li>
-                      <li>Financing turns (borrow at 2.15%, lend at 3.75%)</li>
-                      <li>OTC Gains by taking the other side of losing trades</li>
-                    </ul>
+                  <li>
+                    Brokers create narratives that increase your chances of
+                    losing money
                   </li>
-                  <li>Retail clients provide brokers the margin to negotiate credit facilities.</li>
-                  <li>That same credit can be used by brokers to bet against clients.</li>
+                  <li>
+                    They push short-term, high-frequency trading to maximize
+                    commissions
+                  </li>
+                  <li>
+                    Revenue streams: (Spread + Commission) + (Financing Fees) +
+                    OTC gains from losing trades
+                  </li>
+                  <li>
+                    They want you to trade in the biggest size possible with
+                    little or no risk (to them)
+                  </li>
                 </ul>
+              </div>
+            </div>
+
+            <div className="card border-warning mb-4">
+              <div className="card-body">
+                <h5>Broker Revenue Model</h5>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="card bg-light mb-3">
+                      <div className="card-header bg-danger text-white">
+                        A-Book (Losing Clients - 90%)
+                      </div>
+                      <div className="card-body">
+                        <ul>
+                          <li>Trades passed to liquidity provider</li>
+                          <li>Take other side automatically</li>
+                          <li>Run OTC position naked (no hedge)</li>
+                          <li>Client loses → Broker makes money</li>
+                          <li>
+                            Revenue: Spread + Comm + Finance Fees + OTC Gain
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="card bg-light mb-3">
+                      <div className="card-header bg-success text-white">
+                        B-Book (Winning Clients - 10%)
+                      </div>
+                      <div className="card-body">
+                        <ul>
+                          <li>Broker acts as counterparty</li>
+                          <li>Strategically hedge profitable clients</li>
+                          <li>Hedge OTC with underlying</li>
+                          <li>Client wins → Broker loses</li>
+                          <li>Revenue: Only Spread + Comm + Finance Fees</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="card border-info mb-4">
+              <div className="card-body">
+                <h5>Smart Money vs Dumb Money</h5>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="card mb-3">
+                      <div className="card-header bg-info text-white">
+                        Smart Money (Professional)
+                      </div>
+                      <div className="card-body">
+                        <ul>
+                          <li>Understands market structure and COI</li>
+                          <li>Trades opposite of retail traders</li>
+                          <li>Systematic, diversified approach</li>
+                          <li>Focuses on capital preservation</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="card mb-3">
+                      <div className="card-header bg-warning text-dark">
+                        Dumb Money (Retail)
+                      </div>
+                      <div className="card-body">
+                        <ul>
+                          <li>Believes broker-provided narratives</li>
+                          <li>Trades as told by COI participants</li>
+                          <li>Focuses on short-term, few positions</li>
+                          <li>Often results in capital destruction</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="alert alert-dark mt-3">
+                  <strong>Smart Money requires Dumb Money to exist:</strong>{" "}
+                  Professionals predict the future while retail reacts to the
+                  present, creating wealth transfer.
+                </div>
               </div>
             </div>
 
             <div className="card border-secondary mb-4">
               <div className="card-body">
-                <h5 className="card-title">The Inversion Narrative</h5>
-                <ul>
-                  <li>CFD accounts are easy to open—just ID, address, and risk consent required.</li>
-                  <li>Brokers offer high leverage to anyone, regardless of experience.</li>
-                  <li>Clients unknowingly fund broker profits and broker credit with their own deposits.</li>
-                </ul>
+                <h5>Common Myths & Red Flags</h5>
+                <div className="alert alert-warning">
+                  "The system is designed to maintain the status quo - the
+                  biggest payers (banks, hedge funds) all work together!"
+                </div>
+                <table className="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Myth</th>
+                      <th>Reality</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>"Day Trading Works"</td>
+                      <td>
+                        Guaranteed volume for brokers/educators. Costs (2x
+                        spread + commission) eat profits.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>"Monthly income from trading"</td>
+                      <td>
+                        Educators structure monthly subscriptions for their own
+                        income.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>"Trading is easy - just follow charts"</td>
+                      <td>
+                        Oversimplification. Most educators lack systematic
+                        processes.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>"Psychology is everything"</td>
+                      <td>
+                        Often emphasized by educators who don't understand
+                        trading.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>"Risk management alone ensures success"</td>
+                      <td>
+                        Without a real edge, risk management just slows losses.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="alert alert-danger mt-3">
+                  <strong>
+                    WHEN DESPERATION MEETS CONFLICTS OF INTEREST ONLY BAD THINGS
+                    CAN HAPPEN!
+                  </strong>
+                  <br />
+                  The system is designed to distract you from the truth that
+                  most taught strategies lose money.
+                </div>
               </div>
             </div>
-
           </div>
         )}
       </div>
