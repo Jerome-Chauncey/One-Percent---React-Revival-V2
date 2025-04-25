@@ -24,7 +24,7 @@ const HeroSection = () => {
             </p>
             
             <a
-              href="#learn-more"
+              href="/login"
               className="btn btn-accent px-4 py-2 rounded-pill fw-semibold"
             >
               Learn More
