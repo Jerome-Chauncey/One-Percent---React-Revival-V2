@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function BrokerForm({ onSubmit }) {
   const [formData, setFormData] = useState({
@@ -13,6 +13,22 @@ export default function BrokerForm({ onSubmit }) {
     hiddenFees: "",
     riskManagement: "",
   });
+
+  const [brokers, setBrokers] = useState([]);
+
+  useEffect(() => {
+    const url = "https://onepercentrevivalv2-database-brokers.onrender.com/brokers";
+  
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); 
+        setBrokers(data); 
+      })
+      .catch((error) => console.error("Error fetching broker data:", error));
+  }, []);
+  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -38,25 +54,31 @@ export default function BrokerForm({ onSubmit }) {
       riskManagement: "",
     });
   };
+
   return (
-    <div className=" card shadow-sm p-3 mb-4 bg-body rounded" style={{width: "100%"}}>
-      <h2>Broker Review Form</h2> 
+    <div className="card shadow-sm p-3 mb-4 bg-body rounded" style={{ width: "100%" }}>
+      <h2>Broker Review Form</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3 ">
-          <label className="form-label" htmlFor="Broker">
+        <div className="mb-3">
+          <label className="form-label" htmlFor="brokerName">
             Broker Name
           </label>
 
-          <div className="  col-md-5">
-            <input
-              type="text"
-              className="form-control"
+          <div className="col-md-5">
+            <select
               name="brokerName"
               value={formData.brokerName}
               onChange={handleChange}
-              placeholder="Enter Broker Name"
+              className="form-control"
               required
-            />
+            >
+              <option value="">Select a broker</option>
+              {brokers.map((broker) => (
+                <option key={broker.id} value={broker.name}>
+                  {broker.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="mb-3">
