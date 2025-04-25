@@ -2,39 +2,32 @@ import React from 'react'
 import TeamMember from '../components/TeamMember'
 import TickerTape from "../components/TickerTape";
 
-
-
 const teamMembers = [
   {
-    photo: "",
+    photo: "/Dunstan.jpg",
     name: "Alex Dunstan Kiiru",
-    role: "",
-    description: "",
+    description: "Developed the project skeleton, login/authentication, key components, pages, routes, and debugging.",
   },
   {
-    photo: "/f2.jpeg",
+    photo: "/Jerome.jpeg",
     name: "Jerome Chauncey",
-    role: "CTO",
     description:
-      "Jerome oversees all technical aspects and ensures our platform is cutting-edge.",
+      "Group leader; designed project in Figma, coordinated team tasks, contributed to components, pages, API endpoints, and db.json.",
   },
   {
     photo: "/f3.jpeg",
     name: "Janyce Wathuo",
-    role: "",
-    description: "",
+    description: "Contributed to project development and supported team efforts.",
   },
   {
-    photo: "/f3.jpeg",
+    photo: "/Faisal.jpeg",
     name: "Faisal Said",
-    role: "",
-    description: "",
+    description: "Led the project styling and visual design.",
   },
   {
-    photo: "/f3.jpeg",
+    photo: "/Maverick.jpeg",
     name: "Maverick Kabogo",
-    role: "",
-    description: "",
+    description: "Assisted in creating components and pages.",
   },
 ];
 
