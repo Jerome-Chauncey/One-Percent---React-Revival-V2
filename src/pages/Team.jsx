@@ -1,6 +1,7 @@
 import React from 'react'
 import TeamMember from '../components/TeamMember'
 import TickerTape from "../components/TickerTape";
+import "../styles/index.css";
 
 const teamMembers = [
   {
