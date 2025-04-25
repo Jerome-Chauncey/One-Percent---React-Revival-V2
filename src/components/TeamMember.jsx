@@ -6,9 +6,8 @@ const TeamMember = ({ photo, name, role, description }) => {
       <div className="card h-100 bg-transparent border border-info border-opacity-25">
         <img
           src={photo}
-          className="card-img-top"
+          className="card-img-top team-member-img"
           alt={name}
-          style={{ objectFit: 'cover', height: '300px' }}
         />
         <div className="card-body text-center">
           <h3 className="card-title h4 mb-1" style={{ color: '#4CC9F0' }}>
