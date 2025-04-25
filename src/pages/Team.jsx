@@ -46,7 +46,7 @@ const Team = () => {
             className="display-4 fw-bold mb-5 text-center"
             style={{ color: "#4CC9F0" }}
           >
-            Meet Our Team
+            MEET OUR TEAM
           </h2>
           <div className="row g-4 justify-content-center">
             {teamMembers.map((member, index) => (
