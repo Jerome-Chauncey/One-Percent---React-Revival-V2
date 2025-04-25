@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async (username, email, password) => {
+  const register = async (email, password) => {
     try {
       const response = await fetch(
         "https://onepercentrevivalv2-users.onrender.com/users",
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username, email, password }),
+          body: JSON.stringify({ email, password }),
         }
       );
 
@@ -72,8 +72,52 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const resetPassword = async (email) => {
+    try {
+      const response = await fetch("https://onepercentrevivalv2-users.onrender.com/password-reset-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Password reset request failed");
+      }
+
+      return { success: true };
+    } catch (error) {
+      console.error("Password reset request error:", error);
+      return { success: false, message: error.message };
+    }
+  };
+
+  const confirmResetPassword = async (token, newPassword) => {
+    try {
+      const response = await fetch("https://onepercentrevivalv2-users.onrender.com/password-reset-confirm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token, newPassword }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Password reset confirmation failed");
+      }
+
+      return { success: true };
+    } catch (error) {
+      console.error("Password reset confirmation error:", error);
+      return { success: false, message: error.message };
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout, resetPassword, confirmResetPassword }}>
       {children}
     </AuthContext.Provider>
   );
