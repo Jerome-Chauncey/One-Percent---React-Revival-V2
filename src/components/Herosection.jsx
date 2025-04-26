@@ -1,7 +1,10 @@
 import React from "react";
 import { Shield, LineChart, Users, Award } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="gradient-bg min-vh-100 d-flex flex-column align-items-center position-relative overflow-hidden">
       {/* Gradient overlay */}
@@ -23,12 +26,12 @@ const HeroSection = () => {
               Stay ahead of the market. Learn to self-regulate before crises happen.
             </p>
             
-            <a
-              href="/login"
+            <button
+              onClick={() => navigate("/login")}
               className="btn btn-accent px-4 py-2 rounded-pill fw-semibold"
             >
               Learn More
-            </a>
+            </button>
           </div>
         </div>
       </div>
